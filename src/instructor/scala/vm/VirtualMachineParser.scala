@@ -1,8 +1,6 @@
-package instructor.vm
-
-import bc.ByteCode
-import instructor.scala.bc.{ByteCode, InvalidBytecodeException}
-import instructor.vendor.{Instruction, ProgramParser}
+package vm
+import vendor._
+import bc._
 
 /**
   * A `VirtualMachineParser` is used to parse a file of bytecode

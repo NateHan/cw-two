@@ -1,10 +1,12 @@
 package factory
 
-import bc.{ByteCodeFactory, ByteCodeParser}
+//import bc.{ByteCodeFactory, ByteCodeParser}
 import instructor.scala.bc.{ByteCodeFactory, ByteCodeParser}
 import instructor.vendor.ProgramParser
-import instructor.vm.{VirtualMachine, VirtualMachineParser}
-import vm.{VirtualMachine, VirtualMachineParser}
+import scala.instructor.vm.{VirtualMachine, VirtualMachineParser}
+import scala.instructo
+
+//import vm.{VirtualMachine, VirtualMachineParser}
 
 /**
   * The `VirtualMachineFactory` follows the *factory pattern*. It provides

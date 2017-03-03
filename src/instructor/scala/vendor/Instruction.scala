@@ -1,4 +1,4 @@
-package instructor.vendor
+package vendor
 
 /**
   * Represents an exception that could be thrown if an invalid instruction

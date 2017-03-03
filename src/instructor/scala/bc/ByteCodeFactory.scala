@@ -1,5 +1,4 @@
-package instructor.scala.bc
-
+package bc
 /**
   * [[ByteCodeFactory]] defines a factory interface for creating
   * [[ByteCode]] objects. You will need to extend this to provide

@@ -1,7 +1,5 @@
-package instructor.vm
-
+package vm
 import bc.ByteCode
-import instructor.scala.bc.ByteCode
 
 /**
   * Represents an exception that can be thrown if a virtual machine

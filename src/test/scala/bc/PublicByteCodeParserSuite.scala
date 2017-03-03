@@ -1,7 +1,6 @@
 package bc
 
 import factory.VirtualMachineFactory
-import instructor.scala.bc.ByteCodeValues
 import org.scalatest.FunSuite
 
 class PublicByteCodeParserSuite extends FunSuite with ByteCodeValues {

@@ -1,7 +1,6 @@
 package bc
 
 import factory.VirtualMachineFactory
-import instructor.scala.bc.{ByteCodeValues, InvalidBytecodeException}
 import org.scalatest.FunSuite
 
 class PublicByteCodeFactorySuite extends FunSuite with ByteCodeValues {
