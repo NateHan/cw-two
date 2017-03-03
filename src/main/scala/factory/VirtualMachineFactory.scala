@@ -1,10 +1,9 @@
 package factory
 
-//import bc.{ByteCodeFactory, ByteCodeParser}
-import instructor.scala.bc.{ByteCodeFactory, ByteCodeParser}
-import instructor.vendor.ProgramParser
-import scala.instructor.vm.{VirtualMachine, VirtualMachineParser}
-import scala.instructo
+import bc.{ByteCodeFactory, ByteCodeParser}
+import vendor.{ProgramParser, ProgramParserImpl}
+import vm.{VirtualMachine, VirtualMachineParser}
+
 
 //import vm.{VirtualMachine, VirtualMachineParser}
 
@@ -18,7 +17,7 @@ object VirtualMachineFactory {
   def byteCodeFactory: ByteCodeFactory = ???
 
   // TODO
-  def vendorParser: ProgramParser = ???
+  def vendorParser: ProgramParser = new ProgramParserImpl()
 
   // TODO
   def byteCodeParser: ByteCodeParser = ???
