@@ -1,4 +1,4 @@
-package bc
+package instructor.scala.bc
 
 /**
   * [[ByteCodeParser]] parses byte code values.

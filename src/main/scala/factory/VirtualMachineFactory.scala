@@ -1,7 +1,9 @@
 package factory
 
 import bc.{ByteCodeFactory, ByteCodeParser}
-import vendor.ProgramParser
+import instructor.scala.bc.{ByteCodeFactory, ByteCodeParser}
+import instructor.vendor.ProgramParser
+import instructor.vm.{VirtualMachine, VirtualMachineParser}
 import vm.{VirtualMachine, VirtualMachineParser}
 
 /**

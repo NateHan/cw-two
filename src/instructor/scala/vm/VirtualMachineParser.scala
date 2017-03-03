@@ -1,21 +1,23 @@
-package vm
+package instructor.vm
 
 import bc.ByteCode
+import instructor.scala.bc.{ByteCode, InvalidBytecodeException}
+import instructor.vendor.{Instruction, ProgramParser}
 
 /**
   * A `VirtualMachineParser` is used to parse a file of bytecode
-  * instructions (as defined by [[vendor.ProgramParser]]). Note,
+  * instructions (as defined by [[ProgramParser]]). Note,
   * we will use the vendor's parser to parse a file and use the
   * adapter design pattern to write an adapter that will
-  * translate a vector of [[vendor.Instruction]] into a
-  * vector [[bc.ByteCode]].
+  * translate a vector of [[Instruction]] into a
+  * vector [[ByteCode]].
   */
 trait VirtualMachineParser {
   /**
-    * Returns a vector of [[bc.ByteCode]].
+    * Returns a vector of [[ByteCode]].
     *
     * This method parses a file into a vector of bytecode objects.
-    * Note, this method should throw a [[bc.InvalidBytecodeException]]
+    * Note, this method should throw a [[InvalidBytecodeException]]
     * if it fails to parse a program file correctly.
     *
     * @param file the file containing a program
@@ -24,10 +26,10 @@ trait VirtualMachineParser {
   def parse(file: String): Vector[ByteCode]
 
   /**
-    * Returns a vector of [[bc.ByteCode]].
+    * Returns a vector of [[ByteCode]].
     *
     * This method parses a string into a vector of bytecode objects.
-    * Note, this method should throw a [[bc.InvalidBytecodeException]]
+    * Note, this method should throw a [[InvalidBytecodeException]]
     * if it fails to parse a program string correctly.
     *
     * @param str a string containing a program

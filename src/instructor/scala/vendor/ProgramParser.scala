@@ -1,4 +1,4 @@
-package vendor
+package instructor.vendor
 
 /**
   * A program parser parses a file or string containing a sequence

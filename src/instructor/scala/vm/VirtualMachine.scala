@@ -1,6 +1,7 @@
-package vm
+package instructor.vm
 
 import bc.ByteCode
+import instructor.scala.bc.ByteCode
 
 /**
   * Represents an exception that can be thrown if a virtual machine
@@ -18,7 +19,7 @@ class MachineUnderflowException(msg: String) extends Exception(msg)
   * Represents a stack-based virtual machine.
   *
   * An implementation of a virtual machine is capable of executing
-  * a vector of [[bc.ByteCode]] values. This is where the command
+  * a vector of [[ByteCode]] values. This is where the command
   * pattern comes into play! That is, we defer the execution of
   * each bytecode until it is executed by the virtual machine.
   *

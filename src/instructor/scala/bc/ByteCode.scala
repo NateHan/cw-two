@@ -1,6 +1,6 @@
-package bc
+package instructor.scala.bc
 
-import vm.VirtualMachine
+import instructor.vm.VirtualMachine
 
 /**
   * An exception representing an invalid bytecode. This can be used
