@@ -1,4 +1,4 @@
-name := """Coursework Two - Virtual Machine"""
+sbtname := """Coursework Two - Virtual Machine"""
 
 version := "1.0"
 
