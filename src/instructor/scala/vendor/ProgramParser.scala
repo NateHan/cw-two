@@ -37,6 +37,7 @@ package vendor
   * `iconst` that takes an argument.
   */
 trait ProgramParser {
+
   // a type alias to make it clear!
   type InstructionList = Vector[Instruction]
 
@@ -57,4 +58,6 @@ trait ProgramParser {
     * @return an instruction list
     */
   def parseString(string: String): InstructionList
+
+
 }

@@ -20,7 +20,15 @@ class ProgramParserImpl extends ProgramParser{
     * vendor parser should parse a program file correctly
     *
     */
-  override def parse(file: String): InstructionList = ???
+  override def parse(file: String): InstructionList = {
+    import scala.io.Source
+    val lines = Source.fromFile(file).getLines
+    var iList = InstructionList()
+    for (line <- lines) {
+      iList = iList ++: parseString(line)
+    }
+    iList
+  }
 
   /**
     * Parses a string representation of a bytecode program
@@ -33,10 +41,18 @@ class ProgramParserImpl extends ProgramParser{
     *
     */
   override def parseString(string: String): InstructionList = {
-    var k = InstructionList()
-    var v = Vector[Int](1,2,3,4)
     var q: Array[String] = string.split("\n")
-    q.foreach(a => k = k :+ new Instruction(a,v))
+    var k = InstructionList()
+
+    for ( str <- q) {
+      var vInt: Vector[Int] = Vector[Int]()
+      var wordInst: String = str
+      if (str.contains(" ")) {
+        vInt :+ str.split(" ")(1).toInt
+        wordInst = str.split(" ")(0)
+      }
+      k = k :+ new Instruction(wordInst, vInt)
+    }
     k
   }
 }
