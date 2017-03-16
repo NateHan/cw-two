@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/cw-two-sdp.iml" filepath="$PROJECT_DIR$/.idea/modules/cw-two-sdp.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/cw-two-sdp-build.iml" filepath="$PROJECT_DIR$/.idea/modules/cw-two-sdp-build.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/cwworktwospd.iml" filepath="$PROJECT_DIR$/.idea/modules/cwworktwospd.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/cwworktwospd-build.iml" filepath="$PROJECT_DIR$/.idea/modules/cwworktwospd-build.iml" />
     </modules>
   </component>
 </project>
