@@ -1,7 +1,5 @@
 package vendor
 
-import scala.collection.mutable.ListBuffer
-
 /**
   * Created by Casper on 03/03/2017.
   */
