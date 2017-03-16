@@ -19,10 +19,10 @@ class IsubByteCode extends ByteCode{
     * @return a new virtual machine
     */
   override def execute(vm: VirtualMachine): VirtualMachine = {
-    val x = vm.pop()
-    val y = vm.pop()
+    val x = vm.pop()._1
+    val y = vm.pop()._1
     vm.push(x-y)
-    this
+    vm
 
   }
 }

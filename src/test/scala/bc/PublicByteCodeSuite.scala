@@ -7,8 +7,6 @@ import vm.VirtualMachine
 /**
   * Created by Casper and Nathan on 07/03/2017.
   */
-
-
 class PublicByteCodeSuite extends FunSuite {
 
   val vm = VirtualMachineFactory.virtualMachine

@@ -56,7 +56,9 @@ class VirtualMachineImpl() extends VirtualMachine{
     * @return (i, vm), where i is the integer popped and vm is the
     *         new virtual machine
     */
-  override def pop(): (Int, VirtualMachine) = ???
+  override def pop(): (Int, VirtualMachine) = {
+    (instructions.pop(), this)
+  }
 
   /**
     * Returns the state of the virtual machine stack.

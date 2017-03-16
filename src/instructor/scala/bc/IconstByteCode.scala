@@ -23,6 +23,6 @@ class IconstByteCode extends ByteCode{
     */
   override def execute(vm: VirtualMachine): VirtualMachine = {
     vm.push(111) // needs to return parsed value
-    this
+    vm
   }
 }

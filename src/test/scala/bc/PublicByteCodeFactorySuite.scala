@@ -6,6 +6,12 @@ import org.scalatest.FunSuite
 class PublicByteCodeFactorySuite extends FunSuite with ByteCodeValues {
   val bcf = VirtualMachineFactory.byteCodeFactory
 
+  test("[1] iconst bytecode should be made by factory") {
+      val code = bytecode("iconst")
+      val bc = bcf.make(code)
+      assert(bc.code == code, "invalid bytecode value")
+  }
+
   test("[5] all bytecodes should be made by factory") {
     // Tests that each bytecode (modulo "iconst") can be made.
     for ((name, code) <- (bytecode - "iconst")) {

@@ -21,8 +21,8 @@ class IdecByteCode extends ByteCode{
     * @return a new virtual machine
     */
   override def execute(vm: VirtualMachine): VirtualMachine = {
-    vm.push(vm.pop()-1)
-    this
+    vm.push(vm.pop()._1-1)
+    vm
   }
 
 }
