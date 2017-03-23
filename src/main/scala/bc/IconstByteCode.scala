@@ -5,7 +5,7 @@ import vm.VirtualMachine
 /**
   * Created by Casper on 07/03/2017.
   */
-class IconstByteCode extends ByteCode{
+class IconstByteCode(val argument: Int) extends ByteCode{
 
   /**
     * A unique byte value representing the bytecode. An implementation
@@ -22,7 +22,8 @@ class IconstByteCode extends ByteCode{
     * @return a new virtual machine
     */
   override def execute(vm: VirtualMachine): VirtualMachine = {
-    vm.push(111) // needs to return parsed value
+    vm.state
+    vm.push(argument) // needs to return parsed value
     vm
   }
 }

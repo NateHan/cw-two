@@ -8,7 +8,7 @@ class PublicByteCodeFactorySuite extends FunSuite with ByteCodeValues {
 
   test("[1] iconst bytecode should be made by factory") {
       val code = bytecode("iconst")
-      val bc = bcf.make(code)
+      val bc = bcf.make(code, 3)
       assert(bc.code == code, "invalid bytecode value")
   }
 

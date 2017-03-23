@@ -30,7 +30,7 @@ class ByteCodeFactoryImpl extends ByteCodeFactory with ByteCodeValues {
     */
   override def make(byte: Byte, args: Int*): ByteCode = byte match {
     case byte if bytecode("iadd") == byte => new IaddByteCode
-    case byte if bytecode("iconst") == byte => new IconstByteCode
+    case byte if bytecode("iconst") == byte => new IconstByteCode(args.head)
     case byte if bytecode("idec") == byte => new IdecByteCode
     case byte if bytecode("idiv") == byte => new IdivByteCode
     case byte if bytecode("idup") == byte => new IdupByteCode

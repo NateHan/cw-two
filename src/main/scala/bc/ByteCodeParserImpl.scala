@@ -5,10 +5,10 @@ import factory.ByteCodeFactoryImpl
 /**
   * Created by nathanhanak and Casper on 3/16/17.
   */
-class ByteCodeParserImpl extends ByteCodeParser{
+class ByteCodeParserImpl extends ByteCodeParser with ByteCodeValues{
 
-  val byteCodeList: Vector[ByteCode] = Vector[ByteCode]
   val bcFactory : ByteCodeFactory = new ByteCodeFactoryImpl
+  var byteCodeList: Vector[ByteCode] = Vector[ByteCode]()
 
   /**
     * Parses a vector of `Byte` into a vector of `ByteCode`.
@@ -21,9 +21,14 @@ class ByteCodeParserImpl extends ByteCodeParser{
     */
   override def parse(bc: Vector[Byte]): Vector[ByteCode] = {
     for ( byte <- bc ) {
-      val bc = bcFactory.make(byte, )
-      byteCodeList
+
+      if (bytecode("iconst") == byte){
+        byteCodeList = byteCodeList :+ bcFactory.make(byte, bc.indexOf(byte +1))
+      }else {
+        byteCodeList = byteCodeList :+ bcFactory.make(byte)
+      }
     }
+    byteCodeList
   }
 
 }
@@ -39,3 +44,4 @@ wordInst = str.split(" ")(0)
 k = k :+ new Instruction(wordInst, vInt)
 }
 k
+*/

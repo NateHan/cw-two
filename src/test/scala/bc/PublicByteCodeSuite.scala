@@ -12,7 +12,7 @@ class PublicByteCodeSuite extends FunSuite {
   val vm = VirtualMachineFactory.virtualMachine
 
   test("[1] an iConst byte takes an integer and pushes it on the vm stack") {
-    val iConstByteTest: ByteCode = new IconstByteCode
+    val iConstByteTest: ByteCode = new IconstByteCode(12)
     iConstByteTest.execute(vm)
     //vm.push(testInt)
     //iConstByteTest.code = 100
