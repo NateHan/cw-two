@@ -21,6 +21,7 @@ class ByteCodeParserImpl extends ByteCodeParser with ByteCodeValues{
     */
   override def parse(bc: Vector[Byte]): Vector[ByteCode] = {
     var byteCodeList: Vector[ByteCode] = Vector[ByteCode]()
+
     var inconstIsPresent: Boolean = false
     for(i <- bc.indices){
 

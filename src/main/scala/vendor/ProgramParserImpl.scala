@@ -38,7 +38,8 @@ class ProgramParserImpl extends ProgramParser{
     * vendor parser should parse a program string correctly
     *
     */
-  private override def parseString(string: String): InstructionList = {
+  //@throws(classOf[java.lang.NumberFormatException])
+   override def parseString(string: String): InstructionList = {
     var q: Array[String] = string.split("\n")
     var k = InstructionList()
 
@@ -46,8 +47,9 @@ class ProgramParserImpl extends ProgramParser{
       var vInt: Vector[Int] = Vector[Int]()
       var wordInst: String = str
       if (str.contains(" ")) {
-        vInt :+ str.split(" ")(1).toInt
-        wordInst = str.split(" ")(0)
+        val splitted = str.split(" ")
+        wordInst = splitted(0)
+        vInt = vInt :+ splitted(1).toInt
       }
       k = k :+ new Instruction(wordInst, vInt)
     }

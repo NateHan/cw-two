@@ -12,6 +12,8 @@ class PublicVendorParserSuite extends FunSuite {
   }
 
 
+
+
   test("[4] vendor parser should parse a program file correctly") {
     val insts = vp.parse("programs/p03.vm")
     assert(insts.length == 20)
@@ -22,5 +24,14 @@ class PublicVendorParserSuite extends FunSuite {
     for (i <- insts.indices) {
       assert(insts(i).name == all(i))
     }
+  }
+
+
+  test("[6] vendor parser should create iconst instructions with non empty arguments  "){
+    val instVector = vp.parseString("iconst 12")
+    val inst = instVector(0)
+    assert(inst.name == "iconst")
+    assert(inst.args.nonEmpty)
+    assert(inst.args(0) == 12)
   }
 }

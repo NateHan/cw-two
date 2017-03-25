@@ -1,6 +1,11 @@
 package vm
-import bc.{ByteCode, ByteCodeParserImpl, ByteCodeValues, InvalidBytecodeException}
-import vendor.ProgramParserImpl
+import java.util.NoSuchElementException
+
+import vendor.{Instruction, ProgramParserImpl}
+import bc.ByteCode
+import bc.ByteCodeValues
+import bc.ByteCodeParserImpl
+import bc.InvalidBytecodeException
 
 
 
@@ -8,6 +13,7 @@ import vendor.ProgramParserImpl
   * Created by Casper on 25/03/2017.
   */
 class VirtualMachineParserImpl extends VirtualMachineParser with ByteCodeValues{
+
   val byteCodeParser = new ByteCodeParserImpl
 
   /**
@@ -21,18 +27,28 @@ class VirtualMachineParserImpl extends VirtualMachineParser with ByteCodeValues{
     * @return a vector of bytecodes
     */
   override def parse(file: String): Vector[ByteCode] = {
-    val programParser = new ProgramParserImpl
-    val instructionVector = programParser.parse(file)
-    var resultBCVector =  Vector[ByteCode]()
+    try{
+      val programParser = new ProgramParserImpl()
+      val instructionVector: Vector[Instruction] = programParser.parse(file)
+      var resultBCVector = Vector[ByteCode]()
 
-    for(instruction <- instructionVector){
-      resultBCVector = resultBCVector :+ parseString(instruction.name)
-
-      if(instruction.args.nonEmpty){
-        resultBCVector = resultBCVector :+ byteCodeParser.parse(instruction.args.head.toByte)
+      for (instruction <- instructionVector) {
+        var instructionString = instruction.name
+        if (instruction.args.nonEmpty) {
+          instructionString += " " + instruction.args.head.toString
+        }
+        resultBCVector = resultBCVector ++: parseString(instructionString)
       }
+      resultBCVector
+    }catch {
+        case ex: java.util.NoSuchElementException => ex.printStackTrace()
+          throw new InvalidBytecodeException("Trying to parse invalid line")
+        case ex2: java.lang.NumberFormatException => ex2.printStackTrace()
+          throw new InvalidBytecodeException("Trying to parse invalid line argument")
+        case ex3: java.lang.ArrayIndexOutOfBoundsException => ex3.printStackTrace()
+          throw new InvalidBytecodeException("Trying to parse line with too many spaces")
 
-    }
+      }
   }
 
   /**
@@ -46,6 +62,16 @@ class VirtualMachineParserImpl extends VirtualMachineParser with ByteCodeValues{
     * @return a vector of bytecodes
     */
   override def parseString(str: String): Vector[ByteCode] = {
-    byteCodeParser.parse(Vector[Byte](bytecode(str)))
+    var result = Vector[ByteCode]()
+
+    if(str.contains(" ")){
+      val wordValue = bytecode(str.split(" ")(0))
+      val numValue = str.split(" ")(1).toByte
+      result = byteCodeParser.parse(Vector(wordValue, numValue))
+    }else{
+      val wordValue = bytecode(str)
+      result = byteCodeParser.parse(Vector(wordValue))
+    }
+    result
   }
 }
