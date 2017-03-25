@@ -2,14 +2,14 @@ package bc
 
 import factory.ByteCodeFactoryImpl
 
+import scala.collection.mutable.ListBuffer
+
 /**
   * Created by nathanhanak and Casper on 3/16/17.
   */
 class ByteCodeParserImpl extends ByteCodeParser with ByteCodeValues{
 
   val bcFactory : ByteCodeFactory = new ByteCodeFactoryImpl
-  var byteCodeList: Vector[ByteCode] = Vector[ByteCode]()
-
   /**
     * Parses a vector of `Byte` into a vector of `ByteCode`.
     *
@@ -20,28 +20,17 @@ class ByteCodeParserImpl extends ByteCodeParser with ByteCodeValues{
     * @return a vector of `ByteCode` objects
     */
   override def parse(bc: Vector[Byte]): Vector[ByteCode] = {
-    for ( byte <- bc ) {
-
-      if (bytecode("iconst") == byte){
-        byteCodeList = byteCodeList :+ bcFactory.make(byte, bc.indexOf(byte +1))
-      }else {
-        byteCodeList = byteCodeList :+ bcFactory.make(byte)
+    var byteCodeList: Vector[ByteCode] = Vector[ByteCode]()
+    for(i <- bc.indices){
+      if(i%2 == 0) {
+        if (bytecode("iconst") == bc(i)) {
+          byteCodeList = byteCodeList :+ bcFactory.make(bc(i), bc(i + 1).toInt)
+        } else {
+          byteCodeList = byteCodeList :+ bcFactory.make(bc(i))
+        }
       }
     }
     byteCodeList
   }
 
 }
-
-/*
-for ( str <- q) {
-var vInt: Vector[Int] = Vector[Int]()
-var wordInst: String = str
-if (str.contains(" ")) {
-vInt :+ str.split(" ")(1).toInt
-wordInst = str.split(" ")(0)
-}
-k = k :+ new Instruction(wordInst, vInt)
-}
-k
-*/
