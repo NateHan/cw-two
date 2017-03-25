@@ -38,7 +38,7 @@ class ProgramParserImpl extends ProgramParser{
     * vendor parser should parse a program string correctly
     *
     */
-  override def parseString(string: String): InstructionList = {
+  private override def parseString(string: String): InstructionList = {
     var q: Array[String] = string.split("\n")
     var k = InstructionList()
 

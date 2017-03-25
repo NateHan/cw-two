@@ -21,4 +21,12 @@ class PublicByteCodeParserSuite extends FunSuite with ByteCodeValues {
     assert(bc(1).code == bytecode("iconst"))
     assert(bc(2).code == bytecode("iadd"))
   }
+
+
+  test("[6] byte code parser sould parse a sequence of bytecode with odd inputs"){
+    val code = Vector(bytecode("iconst"), 4.toByte, bytecode("iconst"), 5.toByte,
+      bytecode("iadd"), bytecode("print"))
+      val bc = bcp.parse(code)
+      assert(bc.length == 4, "did not parse four bytecodes")
+  }
 }

@@ -21,14 +21,21 @@ class ByteCodeParserImpl extends ByteCodeParser with ByteCodeValues{
     */
   override def parse(bc: Vector[Byte]): Vector[ByteCode] = {
     var byteCodeList: Vector[ByteCode] = Vector[ByteCode]()
+    var inconstIsPresent: Boolean = false
     for(i <- bc.indices){
-      if(i%2 == 0) {
+
+      if(!inconstIsPresent){
         if (bytecode("iconst") == bc(i)) {
+          inconstIsPresent = true
           byteCodeList = byteCodeList :+ bcFactory.make(bc(i), bc(i + 1).toInt)
         } else {
           byteCodeList = byteCodeList :+ bcFactory.make(bc(i))
         }
+
+      }else{
+        inconstIsPresent = false
       }
+
     }
     byteCodeList
   }
