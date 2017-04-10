@@ -60,15 +60,34 @@ class VirtualMachineParserImpl extends VirtualMachineParser with ByteCodeValues{
     */
   override def parseString(str: String): Vector[ByteCode] = {
     var result = Vector[ByteCode]()
-
-    if(str.contains(" ")){
-      val wordValue = bytecode(str.split(" ")(0))
-      val numValue = str.split(" ")(1).toByte
-      result = byteCodeParser.parse(Vector(wordValue, numValue))
-    }else{
-      val wordValue = bytecode(str)
-      result = byteCodeParser.parse(Vector(wordValue))
+    var linesArray = str.split("\n")
+    for(line <- linesArray) {
+      result = result ++ lineParser(line)
     }
     result
   }
+
+  /**
+    * Returns a Vector of [[ByteCode]].
+    *
+    * This method parses a string that is a single line and turns it into
+    * a Vector[ByteCode]. Method will split an iConst instruction
+    * into the instruction and its argument,
+    * otherwise all others will just be one single entry.
+    * @param line a string containing a program
+    * @return a vector of bytecodes
+    */
+  private def lineParser(line: String): Vector[ByteCode] = {
+    var result = Vector[ByteCode]()
+    if(line.contains(" ")){
+      val wordValue = bytecode(line.split(" ")(0))
+      val numValue = line.split(" ")(1).toByte
+      result = byteCodeParser.parse(Vector(wordValue, numValue))
+    }else{
+      val wordValue = bytecode(line)
+      result = byteCodeParser.parse(Vector(wordValue))
+    }
+    result
+  } 
+  
 }

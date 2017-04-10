@@ -2,13 +2,15 @@ package vm
 
 import bc.ByteCode
 
+import scala.collection.mutable.ListBuffer
+
 
 /**
-  * Created by nathanhanak on 3/10/17.
+  * Created by nathanhanak and Casper on 3/10/17.
   */
 class VirtualMachineImpl() extends VirtualMachine{
 
-  val instructions = new java.util.Stack[Int]
+  val instructions = new ListBuffer[Int]
 
   /**
     * Executes a vector of bytecodes.
@@ -38,7 +40,12 @@ class VirtualMachineImpl() extends VirtualMachine{
     * @param bc the vector of bytecodes
     * @return a tuple of a new vector of bytecodes and virtual machine
     */
-  override def executeOne(bc: Vector[ByteCode]): (Vector[ByteCode], VirtualMachine) = ???
+  override def executeOne(bc: Vector[ByteCode]): (Vector[ByteCode], VirtualMachine) = {
+    bc.head.execute(this)
+    (bc.drop(1), this)
+  }
+
+
 
   /**
     * Pushes an integer value onto the virtual machine stack.
@@ -47,7 +54,7 @@ class VirtualMachineImpl() extends VirtualMachine{
     * @return a new virtual machine with the integer `value` pushed
     */
   override def push(value: Int): VirtualMachine = {
-    this.instructions.push(value)
+    this.instructions += value
     this
   }
 
@@ -59,7 +66,7 @@ class VirtualMachineImpl() extends VirtualMachine{
     *         new virtual machine
     */
   override def pop(): (Int, VirtualMachine) = {
-    (instructions.pop(), this)
+    (instructions.remove(instructions.size - 1), this)
   }
 
   /**
@@ -69,5 +76,11 @@ class VirtualMachineImpl() extends VirtualMachine{
     *
     * @return the state of the stack
     */
-  override def state: Vector[Int] = Vector(instructions.peek())
+  override def state: Vector[Int] = {
+    var returnVector = Vector[Int]()
+    for (num <- instructions) {
+      returnVector = returnVector :+ num
+    }
+    returnVector.reverse
+  }
 }

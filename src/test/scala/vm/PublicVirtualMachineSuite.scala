@@ -11,6 +11,10 @@ class PublicVirtualMachineSuite extends FunSuite {
   test("[10] a virtual machine should execute a program") {
     val bc  = vmp.parse("programs/p05.vm")
     val vm2 = vm.execute(bc)
+    val bc2 = vmp.parse("programs/p01.vm")
+    val vm3 = vm.execute(bc2)
+    val bc3 = vmp.parse("programs/p03.vm")
+    val vm4 = vm.execute(bc3)
   }
 
   test("[2] iconst should work correctly") {
@@ -49,4 +53,5 @@ class PublicVirtualMachineSuite extends FunSuite {
     assert(next._2.state(0) == 1)
     assert(next._2.state(1) == 2)
   }
+
 }
