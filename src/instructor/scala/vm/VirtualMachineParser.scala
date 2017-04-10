@@ -11,6 +11,8 @@ import bc._
   * vector [[ByteCode]].
   */
 trait VirtualMachineParser {
+
+
   /**
     * Returns a vector of [[ByteCode]].
     *
@@ -21,7 +23,9 @@ trait VirtualMachineParser {
     * @param file the file containing a program
     * @return a vector of bytecodes
     */
-  def parse(file: String): Vector[ByteCode]
+  def parse(file: String): Vector[ByteCode] {
+
+  }
 
   /**
     * Returns a vector of [[ByteCode]].

@@ -8,7 +8,6 @@ import bc.ByteCode
   */
 class VirtualMachineImpl() extends VirtualMachine{
 
-  //val instructions: List[Int] = List[Int]()
   val instructions = new java.util.Stack[Int]
 
   /**
@@ -21,7 +20,11 @@ class VirtualMachineImpl() extends VirtualMachine{
     * @param bc a vector of bytecodes
     * @return a new virtual machine
     */
-  override def execute(bc: Vector[ByteCode]): VirtualMachine = ???
+  override def execute(bc: Vector[ByteCode]): VirtualMachine = {
+    val resultVM = new VirtualMachineImpl
+    bc.foreach(bc => bc.execute(resultVM))
+    resultVM
+  }
 
   /**
     * Executes the next bytecode in the vector of bytecodes.

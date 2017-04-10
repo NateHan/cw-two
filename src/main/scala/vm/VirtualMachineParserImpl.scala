@@ -7,8 +7,6 @@ import bc.ByteCodeValues
 import bc.ByteCodeParserImpl
 import bc.InvalidBytecodeException
 
-
-
 /**
   * Created by Casper on 25/03/2017.
   */
@@ -47,7 +45,6 @@ class VirtualMachineParserImpl extends VirtualMachineParser with ByteCodeValues{
           throw new InvalidBytecodeException("Trying to parse invalid line argument")
         case ex3: java.lang.ArrayIndexOutOfBoundsException => ex3.printStackTrace()
           throw new InvalidBytecodeException("Trying to parse line with too many spaces")
-
       }
   }
 

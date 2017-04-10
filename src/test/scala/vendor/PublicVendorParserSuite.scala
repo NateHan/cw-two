@@ -11,9 +11,6 @@ class PublicVendorParserSuite extends FunSuite {
     assert(insts.length == 4)
   }
 
-
-
-
   test("[4] vendor parser should parse a program file correctly") {
     val insts = vp.parse("programs/p03.vm")
     assert(insts.length == 20)

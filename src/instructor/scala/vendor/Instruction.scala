@@ -25,3 +25,5 @@ class InvalidInstructionFormatException(msg: String) extends Exception(msg)
 class Instruction(val name: String, val args: Vector[Int]) {
   override def toString: String = name + " " + args.mkString(" ")
 }
+
+
