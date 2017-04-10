@@ -13,9 +13,15 @@ class PublicVirtualMachineSuite extends FunSuite {
     val vm2 = vm.execute(bc)
     val bc2 = vmp.parse("programs/p01.vm")
     val vm3 = vm.execute(bc2)
-    val bc3 = vmp.parse("programs/p03.vm")
-    val vm4 = vm.execute(bc3)
   }
+
+  /*
+  test("[6] a virtual machine throws exception if iConst argument is too large") {
+    intercept[java.lang.NumberFormatException] {
+      val bc = vmp.parse("programs/p06-tooBig.vm")
+      val vm2 = vm.execute(bc)
+    }
+  }*/
 
   test("[2] iconst should work correctly") {
     val bc  = vmp.parseString("iconst 1")

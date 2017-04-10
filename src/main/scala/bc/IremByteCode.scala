@@ -22,6 +22,9 @@ class IremByteCode extends ByteCode{
   override def execute(vm: VirtualMachine): VirtualMachine = {
     val x = vm.pop()._1
     val y = vm.pop()._1
+    if(y == 0) {
+      throw new ArithmeticException(s"Attempted to modulo zero: $x%$y")
+    }
     vm.push(x%y)
     vm
   }

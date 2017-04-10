@@ -22,8 +22,7 @@ class IconstByteCode(val argument: Int) extends ByteCode{
     * @return a new virtual machine
     */
   override def execute(vm: VirtualMachine): VirtualMachine = {
-    //vm.state
-    vm.push(argument) // needs to return parsed value
+    vm.push(argument)
     vm
   }
 }
