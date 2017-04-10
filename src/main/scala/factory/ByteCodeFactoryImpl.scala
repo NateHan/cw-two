@@ -11,7 +11,8 @@ class ByteCodeFactoryImpl extends ByteCodeFactory with ByteCodeValues {
     * A map from bytecode names to a unique byte that represents them.
     */
 
-    val a: Byte = bytecode("iadd")
+  val a: Byte = bytecode("iadd")
+
   /**
     * Returns a [[ByteCode]].
     *

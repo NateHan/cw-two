@@ -5,7 +5,7 @@ import vm.VirtualMachine
 /**
   * Created by Casper on 10/03/2017.
   */
-class IincByteCode extends ByteCode{
+class IincByteCode extends ByteCode {
   /**
     * A unique byte value representing the bytecode. An implementation
     * will set this to the bytecode corresponding to the name of the
@@ -20,7 +20,7 @@ class IincByteCode extends ByteCode{
     * @return a new virtual machine
     */
   override def execute(vm: VirtualMachine): VirtualMachine = {
-    vm.push(vm.pop()._1+ 1)
+    vm.push(vm.pop()._1 + 1)
     vm
   }
 }

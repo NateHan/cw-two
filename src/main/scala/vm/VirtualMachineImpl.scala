@@ -8,7 +8,7 @@ import scala.collection.mutable.ListBuffer
 /**
   * Created by nathanhanak and Casper on 3/10/17.
   */
-class VirtualMachineImpl() extends VirtualMachine{
+class VirtualMachineImpl() extends VirtualMachine {
 
   val instructions = new ListBuffer[Int]
 
@@ -44,7 +44,6 @@ class VirtualMachineImpl() extends VirtualMachine{
     bc.head.execute(this)
     (bc.drop(1), this)
   }
-
 
 
   /**

@@ -5,7 +5,7 @@ import vm.VirtualMachine
 /**
   * Created by Casper on 10/03/2017.
   */
-class IswapByteCode extends ByteCode{
+class IswapByteCode extends ByteCode {
 
   /**
     * A unique byte value representing the bytecode. An implementation

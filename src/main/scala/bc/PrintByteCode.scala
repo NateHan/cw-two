@@ -1,3 +1,4 @@
+
 package bc
 
 import vm.VirtualMachine
@@ -5,7 +6,7 @@ import vm.VirtualMachine
 /**
   * Created by Casper on 10/03/2017.
   */
-class PrintByteCode extends ByteCode{
+class PrintByteCode extends ByteCode {
 
   /**
     * A unique byte value representing the bytecode. An implementation

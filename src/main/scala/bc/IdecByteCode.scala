@@ -5,7 +5,7 @@ import vm.VirtualMachine
 /**
   * Created by Casper on 10/03/2017.
   */
-class IdecByteCode extends ByteCode{
+class IdecByteCode extends ByteCode {
 
   /**
     * A unique byte value representing the bytecode. An implementation
@@ -21,7 +21,7 @@ class IdecByteCode extends ByteCode{
     * @return a new virtual machine
     */
   override def execute(vm: VirtualMachine): VirtualMachine = {
-    vm.push(vm.pop()._1-1)
+    vm.push(vm.pop()._1 - 1)
     vm
   }
 

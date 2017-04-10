@@ -30,8 +30,9 @@ class PublicVirtualMachineSuite extends FunSuite {
   }
 
   test("[2] iadd should work correctly") {
-    val bc  = vmp.parseString("iconst 1\niconst 2\niadd")
-    var next = vm.executeOne(bc)
+    val bc  = vmp.parseString("iconst 1\niconst 2\niadd") //iconst 1
+                                                          //iconst 2
+    var next = vm.executeOne(bc)                          //iadd
     assert(next._2.state.head == 1)
     next = next._2.executeOne(next._1)
     assert(next._2.state.head == 2)

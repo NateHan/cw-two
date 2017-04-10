@@ -5,7 +5,7 @@ import vm.VirtualMachine
 /**
   * Created by Casper on 10/03/2017.
   */
-class InegByteCode extends ByteCode{
+class InegByteCode extends ByteCode {
   /**
     * A unique byte value representing the bytecode. An implementation
     * will set this to the bytecode corresponding to the name of the

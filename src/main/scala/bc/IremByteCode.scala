@@ -5,7 +5,7 @@ import vm.VirtualMachine
 /**
   * Created by Casper on 10/03/2017.
   */
-class IremByteCode extends ByteCode{
+class IremByteCode extends ByteCode {
   /**
     * A unique byte value representing the bytecode. An implementation
     * will set this to the bytecode corresponding to the name of the
@@ -22,10 +22,10 @@ class IremByteCode extends ByteCode{
   override def execute(vm: VirtualMachine): VirtualMachine = {
     val x = vm.pop()._1
     val y = vm.pop()._1
-    if(y == 0) {
+    if (y == 0) {
       throw new ArithmeticException(s"Attempted to modulo zero: $x%$y")
     }
-    vm.push(x%y)
+    vm.push(x % y)
     vm
   }
 }

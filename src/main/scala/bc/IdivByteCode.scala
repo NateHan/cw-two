@@ -25,7 +25,7 @@ class IdivByteCode extends ByteCode{
     if(y == 0) {
       throw new ArithmeticException(s"Attempted to divide zero: $x%$y")
     }
-    vm.push(x/y)
+    vm.push(x / y)
     vm
   }
 }
